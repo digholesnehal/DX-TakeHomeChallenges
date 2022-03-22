@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	h2   {color: blue;}
+  span {font-size: large;}
+</style>
+</head>
+<body>
+
+<h2>Enter the input string in following field</h2>
+<input multiple="true" id="str">
+<button onclick={findLongest()}>Search Largest Word</button>
+<h5>Largest Word is: <span id="output" ></span> </h5>
+
+<script>
+  
+  function findLongest(){
+    let str = document.getElementById("str").value;
+    console.log("str: ", str)
+    str = str && str.match(/[a-zA-Z]+/gi);
+    vowelRegex = /[aeiou]/gi;
+    let largest = str[0];
+    for(let i = 0; i < str.length; i++){
+      if(str[i].length >= largest.length) {
+        largest = str[i].length === largest.length ?  str[i].match(vowelRegex) > largest.match(vowelRegex) ? str[i] : largest : str[i];
+      }
+    }
+    document.getElementById("output").innerHTML = largest;
+  }
+  </script>
+</body>
+</html>
